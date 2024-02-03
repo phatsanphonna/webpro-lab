@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <title>Document</title>
+    <script>
+        const sequence = [1, 2, 3, 4]
+
+        function rotate() {
+            const pic1 = document.getElementById('pic1')
+            const pic2 = document.getElementById('pic2')
+            const pic3 = document.getElementById('pic3')
+            const pic4 = document.getElementById('pic4')
+
+            const lastnumber = sequence.pop()
+            sequence.unshift(lastnumber)
+
+            console.log(sequence)
+
+            pic1.src = `http://10.0.15.21/lab/lab3/images/${sequence[0]}.png`
+            pic2.src = `http://10.0.15.21/lab/lab3/images/${sequence[1]}.png`
+            pic4.src = `http://10.0.15.21/lab/lab3/images/${sequence[2]}.png`
+            pic3.src = `http://10.0.15.21/lab/lab3/images/${sequence[3]}.png`
+        }
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <img class="col" src="http://10.0.15.21/lab/lab3/images/1.png" id="pic1">
+            <img class="col" src="http://10.0.15.21/lab/lab3/images/2.png" id="pic2">
+        </div>
+        <div class="row">
+            <img class="col" src="http://10.0.15.21/lab/lab3/images/4.png" id="pic3">
+            <img class="col" src="http://10.0.15.21/lab/lab3/images/3.png" id="pic4">
+        </div>
+        <button onclick="rotate()" class="btn btn-primary">Rotate</button>
+    </div>
+</body>
+
+</html>

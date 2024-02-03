@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function showGraph() {
+            const math = document.getElementById('math')
+            const thai = document.getElementById('thai')
+            const english = document.getElementById('english')
+            const science = document.getElementById('science')
+            const social = document.getElementById('social')
+
+            math.style.width = '50%'
+            thai.style.width = '80%'
+            english.style.width = '20%'
+            science.style.width = '100%'
+            social.style.width = '89%'
+        }
+    </script>
+</head>
+
+<body>
+    <h2 id="math" style="background-color: burlywood; width: 20%;">Math</h2>
+    <h2 id="thai" style="background-color: burlywood; width: 20%;">Thai</h2>
+    <h2 id="english" style="background-color: burlywood; width: 20%;">English</h2>
+    <h2 id="science" style="background-color: burlywood; width: 20%;">Science</h2>
+    <h2 id="social" style="background-color: burlywood; width: 20%;">Social</h2>
+    <button onclick="showGraph()">show graph</button>
+</body>
+
+</html>
