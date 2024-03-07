@@ -1,8 +1,6 @@
 <?php
 include './conn.php';
 
-session_start();
-
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $id = $_POST['id'];
   $firstname = $_POST['firstname'];
@@ -12,20 +10,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $phone = $_POST['phone'];
 
   if (isset($_POST['save'])) {
-    $_SESSION['employee']['id'] = $id;
-    $_SESSION['employee']['firstname'] = $firstname;
-    $_SESSION['employee']['lastname'] = $lastname;
-    $_SESSION['employee']['address'] = $address;
-    $_SESSION['employee']['email'] = $email;
-    $_SESSION['employee']['phone'] = $phone;
-    session_commit();
+    setcookie('employee[id]', $id, time() + 3600);
+    setcookie('employee[firstname]', $firstname, time() + 3600);
+    setcookie('employee[lastname]', $lastname, time() + 3600);
+    setcookie('employee[address]', $address, time() + 3600);
+    setcookie('employee[email]', $email, time() + 3600);
+    setcookie('employee[phone]', $phone, time() + 3600);
   } else if (isset($_POST['delete'])) {
-    session_unset();
-    session_commit();
+    setcookie('employee[id]', '', time() - 3600);
+    setcookie('employee[firstname]', '', time() - 3600);
+    setcookie('employee[lastname]', '', time() - 3600);
+    setcookie('employee[address]', '', time() - 3600);
+    setcookie('employee[email]', '', time() - 3600);
+    setcookie('employee[phone]', '', time() - 3600);
   }
 }
 
-print_r($_SESSION);
+print_r($_COOKIE);
 ?>
 
 <!DOCTYPE html>
@@ -45,8 +46,8 @@ print_r($_SESSION);
     $employee = array();
 
     if (isset($_POST['show'])) {
-      $employee = $_SESSION['employee'];
-    } else if (!isset($_SESSION['employee'])) {
+      $employee = $_COOKIE['employee'];
+    } else if (!isset($_COOKIE['employee'])) {
       $sql = "SELECT * FROM customers LIMIT 1";
       $query = $db->query($sql);
       $result = $query->fetchArray(SQLITE3_ASSOC);
